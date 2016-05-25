@@ -1,6 +1,6 @@
 var Client = require('node-rest-client').Client;
 var http = require('http') ;
-var restMainUrl = "http://cmpe281-lab-1979921722.us-east-1.elb.amazonaws.com/userdb/credentials";
+var restMainUrl = "http://cmpe281-lab-1979921722.us-east-1.elb.amazonaws.com/userdb/exam";
 
 exports.add = function(req, res) {
 	var body = {
@@ -16,7 +16,7 @@ exports.add = function(req, res) {
                      //console.log(body);
 	             console.log("ADD STATUS: ");
                      console.log(data);
-                   
+                     console.log(req.connection.remoteAddress);
             	} else {
       		     console.log("ERROR: add");
     				  
@@ -34,6 +34,7 @@ exports.getall = function(req, res) {
 	         	console.log("GET DATA: ");
 	            	console.log(data);                  
 	                res.render('all', { values : data });
+                        console.log(req.connection.remoteAddress);
 	        } else {
 	    		console.log("ERROR: get all");
 	  
