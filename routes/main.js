@@ -32,9 +32,9 @@ exports.getall = function(req, res) {
 	client.get(restMainUrl, function(data, response_raw){
 	        if(response_raw) {
 	         	console.log("GET DATA: ");
-	            	console.log(data);                  
+	            	console.log(data); 
+                        data[0].ip = req.connection.remoteAddress;
 	                res.render('all', { values : data });
-                        console.log(req.connection.remoteAddress);
 	        } else {
 	    		console.log("ERROR: get all");
 	  
