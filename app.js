@@ -23,22 +23,27 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-// development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
 app.get('/', routes.index);
-app.get('/view',main.view);
-app.get('/viewone',main.viewone);
 
+//GET
+app.get('/getall',main.getall);
+app.get('/getone',main.getone);
 
+//PUT
 app.post('/update',main.update);
+
+//POST
 app.post('/add',main.add);
-app.post('/delete',main.delete_rec);
+
+//DELETE
+app.post('/delete',main.delete);
 
 
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+  console.log('server started on port number' + app.get('port'));
 });
